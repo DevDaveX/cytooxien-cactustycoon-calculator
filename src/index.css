@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
+@layer base {
+  :root {
+    --background: 30 10% 12%;
+    --foreground: 40 20% 85%;
+
+    --card: 30 12% 16%;
+    --card-foreground: 40 20% 85%;
+
+    --popover: 30 12% 16%;
+    --popover-foreground: 40 20% 85%;
+
+    --primary: 120 100% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 10% 20%;
+    --secondary-foreground: 40 20% 80%;
+
+    --muted: 30 8% 18%;
+    --muted-foreground: 30 10% 50%;
+
+    --accent: 40 80% 50%;
+    --accent-foreground: 30 10% 10%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 10% 24%;
+    --input: 30 10% 24%;
+    --ring: 120 100% 33%;
+
+    --radius: 0px;
+
+    --success: 120 100% 33%;
+    --warning: 40 80% 50%;
+    --danger: 0 70% 45%;
+    --info: 200 60% 50%;
+
+    --energy: 50 100% 50%;
+    --coal: 30 15% 35%;
+    --uranium: 120 80% 40%;
+    --coolant: 200 70% 50%;
+    --cactus: 120 100% 33%;
+
+    --sidebar-background: 30 10% 14%;
+    --sidebar-foreground: 40 20% 85%;
+    --sidebar-primary: 120 100% 33%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 10% 20%;
+    --sidebar-accent-foreground: 40 20% 80%;
+    --sidebar-border: 30 10% 24%;
+    --sidebar-ring: 120 100% 33%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    image-rendering: pixelated;
+  }
+
+  .font-mono {
+    font-family: 'VT323', monospace;
+  }
+
+  .font-title {
+    font-family: 'Press Start 2P', cursive;
+  }
+}
+
+@layer components {
+  .mc-panel {
+    background-color: hsl(var(--card));
+    border: 3px solid hsl(30 10% 28%);
+    box-shadow:
+      inset 2px 2px 0 hsl(30 10% 30%),
+      inset -2px -2px 0 hsl(30 10% 10%),
+      4px 4px 0 hsl(0 0% 0% / 0.5);
+    padding: 1rem;
+  }
+
+  .mc-button {
+    background-color: hsl(var(--secondary));
+    border: 3px solid;
+    border-color: hsl(30 10% 35%) hsl(30 10% 10%) hsl(30 10% 10%) hsl(30 10% 35%);
+    padding: 0.5rem 1rem;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    transition: filter 0.1s;
+    text-shadow: 2px 2px 0 hsl(0 0% 0% / 0.4);
+  }
+
+  .mc-button:hover {
+    filter: brightness(1.2);
+  }
+
+  .mc-button:active {
+    border-color: hsl(30 10% 10%) hsl(30 10% 35%) hsl(30 10% 35%) hsl(30 10% 10%);
+  }
+
+  .mc-button-primary {
+    background-color: hsl(120 60% 25%);
+    border-color: hsl(120 60% 40%) hsl(120 60% 12%) hsl(120 60% 12%) hsl(120 60% 40%);
+    color: hsl(0 0% 100%);
+  }
+
+  .mc-button-danger {
+    background-color: hsl(0 60% 30%);
+    border-color: hsl(0 60% 45%) hsl(0 60% 15%) hsl(0 60% 15%) hsl(0 60% 45%);
+    color: hsl(0 0% 100%);
+  }
+
+  .mc-input {
+    background-color: hsl(0 0% 0% / 0.5);
+    border: 2px solid hsl(var(--border));
+    padding: 0.4rem 0.6rem;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    color: hsl(var(--foreground));
+    outline: none;
+  }
+
+  .mc-input:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 6px hsl(120 100% 33% / 0.4);
+  }
+
+  .mc-select {
+    background-color: hsl(0 0% 0% / 0.5);
+    border: 2px solid hsl(var(--border));
+    padding: 0.4rem 0.6rem;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    color: hsl(var(--foreground));
+    outline: none;
+    cursor: pointer;
+  }
+
+  .stat-value {
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 hsl(0 0% 0% / 0.5);
+  }
+
+  .stat-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .resource-bar {
+    height: 10px;
+    background-color: hsl(0 0% 0% / 0.5);
+    border: 2px solid hsl(var(--border));
+    overflow: hidden;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    animation: mc-pulse 1s step-end infinite;
+  }
+
+  .glow-green {
+    box-shadow:
+      inset 2px 2px 0 hsl(30 10% 30%),
+      inset -2px -2px 0 hsl(30 10% 10%),
+      0 0 10px hsl(120 100% 33% / 0.2);
+  }
+
+  .pixel-text {
+    text-shadow: 2px 2px 0 hsl(0 0% 0% / 0.5);
+  }
+}
+
+@keyframes mc-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s step-end forwards;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(30 10% 12%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(30 10% 28%);
+  border: 2px solid hsl(30 10% 12%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(30 10% 35%);
+}
